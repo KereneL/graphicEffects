@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Dither Effects</title>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="#">
+    <!-- jQuery UI Js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- p5 and sketch.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <script src="sketch.js"></script>
+    <!-- Main app -->
+    <script type="module">
+        import init from "./main.js";
+        init();
+    </script>
+</head>
+
+<body>
+    <main>
+        <div id="toolbox">
+            <div id="layers-list-acc" class="toolbox-acc">
+                <h3>Layers</h3>
+                <div>
+                    <div id="layers-container">
+                        <div id="layers-loaded-img" class="ui-state-default">
+                            <label for="file-upload" class="custom-file-upload">
+                                <span>&#128444;&#65039;</span> - Loaded Image (click to upload)
+                            </label>
+                        </div>
+                        <ol id="layers-list">
+                        </ol>
+                    </div>
+                    <div id="effects-selector">
+                        <hr style="margin: 0.5em 0;">
+                        <select name="effects" id="effects">
+                            <optgroup>
+                                <option value="none" selected disabled>select a new effect...</option>
+                            </optgroup>
+                            <optgroup label="Ordered Dither">
+                                <option value="bayer">Bayer Matrix Dither</option>
+                            </optgroup>
+                            <optgroup label="Other Stuff">
+                                <option value="channels">Color Channels</option>
+                                <option value="gamma">Gamma</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bayer-effect" class="tool ui-widget ui-widget-content">
+            <fieldset id="bayer-fs">
+                <label for="bayer-select">Dimensions: </label>
+                <select name="bayer" id="bayer-select">
+                    <option value="1">n=2&sup1;</option>
+                    <option value="2">n=2&sup2;</option>
+                    <option value="3">n=2&sup3;</option>
+                </select>
+                <label for="bayer-spread-slider">Spread: </label>
+                <div id="bayer-spread-slider">
+                    <div id="bayer-spread-handle" class="ui-slider-handle"></div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="gamma-effect" class="tool ui-widget ui-widget-content">
+            <fieldset id="gamma-fs">
+                <label for="gamma-slider">&#404; (Gamma):</label>
+                <div id="gamma-slider">
+                    <div id="gamma-handle" class="ui-slider-handle"></div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="channels-effect" class="tool controlgroup-vertical ui-widget ui-widget-content">
+            <fieldset id="channels-fs">
+                <label>Channels:</label>
+                <label for="checkbox-r"></label>
+                <input type="checkbox" name="checkbox-r" id="checkbox-r">
+                <label for="checkbox-g"></label>
+                <input type="checkbox" name="checkbox-g" id="checkbox-g">
+                <label for="checkbox-b"></label>
+                <input type="checkbox" name="checkbox-b" id="checkbox-b">
+                <label for="checkbox-gs"></label>
+                <input type="checkbox" name="checkbox-gs" id="checkbox-gs">
+            </fieldset>
+        </div>
+    </main>
+</body>
+
+</html>
