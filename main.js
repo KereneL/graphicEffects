@@ -17,6 +17,9 @@ export default function init() {
       "ui-accordion-header-collapsed": "",
       "ui-corner-bottom": "",
     },
+    activate: function( event, ui ){
+      hideAllEffectDivs();
+    }
   })
 
   $("#bayer-effect").data("default", { name: "bayer", displayName: "Bayer Matrix", n: 1, spread: 0.5 })
@@ -110,26 +113,31 @@ export default function init() {
     .checkboxradio("refresh");
   function disableGrayscaleChannel() {
     $("#checkbox-gs").prop("checked", false);
+    $("#channels-effect").data("config").gs = false
     $("#checkbox-gs").checkboxradio("refresh")
   }
   $("#checkbox-r").change(function () {
-    if (this.checked) disableGrayscaleChannel()
-    $("#channels-effect").data("config").r = this.checked
+    let state = $(this).prop("checked")
+    if (state) disableGrayscaleChannel()
+    $("#channels-effect").data("config").r = state
     activeLayer.data("config", Object.assign({},$("#channels-effect").data("config")))
   })
   $("#checkbox-g").change(function () {
-    if (this.checked) disableGrayscaleChannel()
-    $("#channels-effect").data("config").g = this.checked
+    let state = $(this).prop("checked")
+    if (state) disableGrayscaleChannel();
+    $("#channels-effect").data("config").g = state
     activeLayer.data("config", Object.assign({},$("#channels-effect").data("config")))
   });
   $("#checkbox-b").change(function () {
-    if (this.checked) disableGrayscaleChannel()
-    $("#channels-effect").data("config").b = this.checked
+    let state = $(this).prop("checked")
+    if (state) disableGrayscaleChannel();
+    $("#channels-effect").data("config").b = state
     activeLayer.data("config", Object.assign({},$("#channels-effect").data("config")))
   });
   $("#checkbox-gs").change(function () {
-    colChannels(!this.checked)
-    $("#channels-effect").data("config").gs = this.checked
+    let state = $(this).prop("checked")
+    colChannels(!state)
+    $("#channels-effect").data("config").gs = state
     activeLayer.data("config", Object.assign({},$("#channels-effect").data("config")))
   })
 

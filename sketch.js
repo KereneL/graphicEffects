@@ -45,7 +45,7 @@ function startAlgo(algo) {
   algo.forEach((layer,index)=>{
     switch(layer.name){
       case "bayer":{
-        bayerDither(layer.n,0.5/*layer.spread*/);
+        bayerDither(layer.n,layer.spread);
         break;
       }
       case "channels":{

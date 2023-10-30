@@ -5,13 +5,11 @@ body {
   height: 100%;
   width: 100%;
   background-color: gray;
-  overflow: auto;
   box-sizing: border-box;
 }
 main {
   height: auto;
   width: auto;
-  overflow: hidden;
   height: 100%;
 }
 #toolbox {
@@ -24,8 +22,6 @@ main {
   height: 321px;
   min-width: 198px;
   width:300px;
-  /* white-space: nowrap; */
-  overflow: clip;
 }
 #layers-loaded-img {
   height: min-content !important;
@@ -130,9 +126,7 @@ main {
   position: relative;
   display: flex;
   flex-direction:column;
-  /*! height: 100%; */
   min-width: 0;
-  border: 0;
   font-size: small;
   padding: .5em ;
   justify-content: space-between;
