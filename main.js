@@ -65,7 +65,7 @@ export default function init() {
   $("#gamma-slider").slider({
     min: 0,
     max: 10,
-    step: 0.025,
+    step: 0.25,
     value: 1,
     create: function () {
       $("#gamma-handle").text($(this).slider("value"));
